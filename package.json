@@ -1,0 +1,56 @@
+{
+  "name": "mina-webpack",
+  "version": "1.0.0",
+  "scripts": {
+    "mina": "node ./build/build.js",
+    "server": "backpack dev"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "backpack-core": "^0.3.0",
+    "consolidate": "^0.14.5",
+    "loader-utils": "^1.1.0",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
+    "nuxt": "^1.0.0-alpha2",
+    "shelljs": "^0.7.7",
+    "webpack": "^2.5.1"
+  },
+  "dependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-loader": "^7.0.0",
+    "bluebird": "^3.5.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.3",
+    "debug": "^2.6.8",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "firebase": "^4.0.0",
+    "fs-extra": "^3.0.1",
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-compress": "^2.0.0",
+    "koa-session": "^5.0.0",
+    "koa-trie-router": "^2.1.5",
+    "lru-cache": "^4.0.2",
+    "mongoose": "^4.10.4",
+    "postcss": "^6.0.1",
+    "postcss-inline-base64": "^2.2.1",
+    "progress-bar-webpack-plugin": "^1.9.3",
+    "pug": "^2.0.0-rc.1",
+    "redux": "^3.6.0",
+    "redux-async-await": "^1.0.1",
+    "regenerator-runtime": "^0.10.5",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.1",
+    "vue-template-compiler": "^2.3.3",
+    "wechat-mina-loader": "^0.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zezhipeng/mina-webpack.git"
+  },
+  "author": "zezhipeng",
+  "license": "MIT"
+}

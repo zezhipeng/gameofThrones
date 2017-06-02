@@ -1,0 +1,126 @@
+<template lang="pug">
+view.container
+  view(wx:for = "{{todo}}") {{item[".key"]}}-{{item[".value"]}}--{{item[".priority"]}}
+  scroll-view(scroll-x)
+    view.houses
+      view.house(wx:for='{{houses}}')
+        image(src='http://oqncgivnd.bkt.clouddn.com/9houses/{{index}}.jpg?v=111')
+          view.name {{item.name}}
+        //- view {{item.currentLord ? item.currentLord.name : ''}}
+
+  view.characters
+
+  view.houses-cards(wx:for='{{houses}}')
+    view.title
+      //- image(src='http://oqncgivnd.bkt.clouddn.com/{{item.name}}.jpg?imageView2/1/w/50/h/50/format/jpg/q/75|imageslim')
+      | {{item.name}}
+      //- view.words {{item.words}}
+    view.characters
+      view.character(wx:for='{{item.swornMembers}}', wx:for-item='character')
+        image(src='http://oqncgivnd.bkt.clouddn.com/{{character.profile}}?imageView2/1/w/200/h/300/format/jpg/q/75|imageslim')
+        //- view.playedBy {{character.playedBy}}
+        view.name {{character.name}}
+        //- view.gender {{character.gender}}
+      view.character
+</template>
+<script>
+var app = getApp()
+var sleep = time => new Promise(resolve => setTimeout(resolve, time))
+
+Page({
+  data: {
+    motto: 'Hello World',
+    povCharacters: [],
+    characters: [],
+    houses: [],
+    userInfo: {}
+  },
+  //事件处理函数
+  bindViewTap: function() {
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
+  },
+  missImg (e) {
+    console.log(e)
+  },
+  async onLoad () {
+    app.getUserInfo(userInfo => {
+      this.setData({
+        userInfo:userInfo
+      })
+    })
+
+    store.dispatch(actions.nineHouses())
+
+    store.subscribe(() => {
+      var state = store.getState()
+
+      this.setData({
+        houses: state.nineHouses
+      })
+    })
+
+    // var povCharacters = await util.getPovCharacters()
+    // var characters = {}
+
+    // povCharacters = _.filter(povCharacters, povCharacter => povCharacter.tvSeries && povCharacter.tvSeries.length)
+
+
+    // var houses = _.reduce(povCharacters, (r, povCharacter) => {
+    //   _.forEach(povCharacter.allegiances, house => {
+    //     if (!_.find(r, house)) r.push(house)
+    //   })
+
+    //   return r
+    // }, [])
+
+    // var characters = {}
+
+    // _.forEach(houses, (house, index) => {
+    //   var d = {}
+    //   houses[index].characters = _.filter(povCharacters, povCharacter => _.find(povCharacter.allegiances, house))
+
+    //   houses[index].characters = _.map(houses[index].characters, character => ({
+    //           name: character.name,
+    //           playedBy: character.playedBy,
+    //           gender: character.gender
+    //         }))
+    // })
+
+    // this.setData({
+    //   houses: houses,
+    //   characters: characters,
+    //   povCharacters: povCharacters
+    // })
+
+
+  }
+})
+</script>
+
+<style lang="sass">
+.userinfo
+  display: flex
+  flex-direction: column
+  align-items: center
+
+
+.userinfo-avatar
+  width: 128rpx
+  height: 128rpx
+  margin: 20rpx
+  border-radius: 50%
+
+
+.userinfo-nickname
+  color: #aaa
+
+
+.usermotto
+  margin-top: 200px
+  text-align: center
+
+
+
+</style>
